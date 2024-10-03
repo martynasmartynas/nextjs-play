@@ -5,7 +5,7 @@ import { getHero } from "@/content/queries";
 import { draftMode } from "next/headers";
 
 export default async function Hero() {
-  const data = await getHero(draftMode().isEnabled);
+  const data = await getHero(draftMode().isEnabled, "hero");
   const { preTitle, title, subtitle, ctaCollection } =
     data.heroCollection.items[0];
   const cta1 = ctaCollection.items[0];

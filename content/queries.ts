@@ -41,7 +41,7 @@ export const getCustomerPost = async (slug: string) => {
   return data;
 };
 
-export const getHero = async (draftMode: boolean) => {
+export const getHero = async (draftMode: boolean, tag: string) => {
   const query = `#graphql
     query Query {
       heroCollection(preview: ${draftMode ? "true" : "false"}) {
@@ -62,6 +62,7 @@ export const getHero = async (draftMode: boolean) => {
   const data = await GQLFetch<HeroQuery>({
     query,
     preview: draftMode,
+    tags: [tag],
   });
 
   if (!data) {
